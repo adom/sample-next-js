@@ -1,0 +1,49 @@
+{
+  "name": "adom-sample-next-js",
+  "version": "0.1.0",
+  "description": "Sample NextJS React app with TypeScript",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "test": "exit 0",
+    "deploy": "sudo yarn deploy:sync && yarn forever:restart",
+    "deploy:sync": "sudo git pull && sudo yarn install && sudo yarn build",
+    "deploy:run": "sudo yarn forever:stop && sudo yarn forever:purge && sudo yarn forever:start",
+    "forever:restart": "sudo forever restart samplenextjs",
+    "forever:purge": "sudo rm -rf /root/.forever/samplenextjs.log",
+    "forever:start": "sudo forever --uid \"samplenextjs\" start ./node_modules/.bin/next start",
+    "forever:stop": "sudo forever stop samplenextjs"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "next": "^11.0.1",
+    "next-redux-wrapper": "^6.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "styled-components": "^5.2.3"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^2.2.6",
+    "@types/jsonwebtoken": "^8.5.2",
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "js-cookie": "^2.2.1",
+    "lodash": "^4.17.21",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.2"
+  }
+}
